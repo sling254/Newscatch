@@ -1,0 +1,13 @@
+
+.navbar{
+    background-color: #10144C;
+}
+.navbar-brand {
+    color: white !important;
+}
+
+#hero{
+    min-height: 20vh;
+    background-color:#27677B;
+    
+}
