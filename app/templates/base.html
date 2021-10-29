@@ -53,6 +53,14 @@
     <!-- insert code block -->
    {% block content%}
    {% endblock %}
+
+   <footer>
+       <div class="container">
+        <a class="navbar-brand"  href="#">NEWSCATCH</a>
+        <p>newscatch Copyright &copy; <span id="year"></span></p>
+       </div>
+    
+   </footer>
     <!-- Custom javascript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{url_for('static',filename='index.js')}}"></script>
