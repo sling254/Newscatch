@@ -3,18 +3,21 @@
 
 {% block content %}
 <div class="container mt-2">
-    <h1  class="text-center">SPORTS</h1>
-    <div class="card" >
-        <div class="card-body">
-        <h5 class="card-title">BBC NEWS</h5>
-        <p class="card-text">The home of BBC Sport online. Includes live sports coverage, breaking news, results, video, audio and analysis on Football, F1, Cricket, Rugby Union, Rugby League, Golf, Tennis and all the main world sports, plus major events such as the Olympic Games.</p>
-        <a href="#" class="btn btn-primary">View BBC NEWS articles</a>
+   
+    <div class="row">
+        
+        <div class="col-md">
+            <h1  class="text-center">Technology</h1>
+            {{ macro.displaySourceList(technology)}}
+
         </div>
-    </div>
-    {{technology.id}}
-    {% for tech in technology %}
-        {{tech}}
-    {% endfor %}
+        <div class="col-md">
+            <h1  class="text-center">Technology</h1>
+            {{ macro.displaySourceList(technology)}}
+
+        </div>
+    </div>    
+    
 </div>
 
 {% endblock %}
