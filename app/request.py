@@ -1,15 +1,17 @@
 import urllib.request, json
 
-from app.model import NewsSource
+from app.model import NewsSource, NewsArticle
 #Getting api key
 api_key = None
 #Getting the movie base url
 base_url = None
+articles_url = "https://newsapi.org/v2/top-headlines?sources={}&apiKey={}"
 
 def configure_request(app):
     global api_key,base_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['NEWS_API_BASE_URL']
+    
     
    
 def get_news_source(category):
@@ -29,12 +31,7 @@ def get_news_source(category):
             news_source_results = process_news_source(news_source_results_list)
 
 
-    return news_source_results
-		
-			
-			
-
-    
+    return news_source_results  
 
 def process_news_source(news_source_list):
 	'''
@@ -59,6 +56,51 @@ def process_news_source(news_source_list):
 
 	return news_source_results
 
+
+def get_articles(id):
+    """
+    Function to processes the articles and return a list of articles objects
+    """
+
+    get_articles_url = articles_url.format(id,api_key)
+    
+    with urllib.request.urlopen(get_articles_url) as url:
+        news_article_data = url.read()
+        news_article_results = json.loads(news_article_data)
+
+        news_article_object = None
+
+        if news_article_results['articles']:
+            news_article_object = process_news_article(news_article_object['articles'])
+
+
+    return news_article_object
+
+
+def process_news_article(news_article_list):
+    '''
+	Function that processes the articles results 
+	Args:
+
+	Returns:
+	'''
+
+    news_article_object = []
+
+    for news_article_item in news_article_list:
+        id = news_article_item.get('id')
+        author = news_article_item.get('author')
+        title = news_article_item.get('title')
+        description = news_article_item.get('description')
+        url = news_article_item.get('url')
+        image = news_article_item.get('urlToImage')
+        date = news_article_item.get('publishedAT')
+
+        if image:
+            news_article_result = NewsArticle(id,author,title,description,url,image,date)
+            news_article_object.append(news_article_result)
+
+    return news_article_object
 
 
 
