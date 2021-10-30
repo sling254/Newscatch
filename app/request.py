@@ -9,53 +9,55 @@ base_url = None
 def configure_request(app):
     global api_key,base_url
     api_key = app.config['NEWS_API_KEY']
-    base_url = app.config['NEWS_API_BASE_URL'] 
-
-
+    base_url = app.config['NEWS_API_BASE_URL']
+    
+   
 def get_news_source(category):
     """
     Function that gets all the sources in json format
     """
 
     get_news_source_url = base_url.format(category,api_key)
-
     with urllib.request.urlopen(get_news_source_url) as url:
         get_news_source_data = url.read()
         get_news_source_response = json.loads(get_news_source_data)
-
         news_source_results = None
 
-        if get_news_source_response['sources']:
+
+        if get_news_source_response['sources']:            
             news_source_results_list = get_news_source_response['sources']
             news_source_results = process_news_source(news_source_results_list)
 
 
     return news_source_results
+		
+			
+			
 
-def process_news_source(news_source_results):
-    '''
+    
+
+def process_news_source(news_source_list):
+	'''
 	Function that processes the news sources results 
 	Args:
 		news_source_list: A list of dictionaries that contain sources details
 	Returns:
 		news_source_results: A list of sources objects
 	'''
-    news_source_results = []
+	news_source_results = []
 
-    for news_source_item in news_source_results:
-        id = news_source_item.get('id')
-        name = news_source_item.get('name')
-        description = news_source_item.get('description')
-        url = news_source_item.get('url')
-        category = news_source_item.get('category')
-        country = news_source_item.get('country')
+	for news_source_item in news_source_list:
+		id = news_source_item.get('id') 
+		name = news_source_item.get('name')
+		description = news_source_item.get('description')
+		url = news_source_item.get('url')
+		category = news_source_item.get('category')
+		country = news_source_item.get('country')
 
-        news_source_object = NewsSource(id,name,description,url,category,country)
-        news_source_results.append(news_source_object)
+		news_source_object = NewsSource(id,name,description,url,category,country)
+		news_source_results.append(news_source_object)
 
-
-    return news_source_results
-
+	return news_source_results
 
 
 

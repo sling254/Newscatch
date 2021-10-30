@@ -1,12 +1,18 @@
 from flask import render_template, url_for
 from . import main
+from ..request import get_news_source
 
 
 
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    """
+    a function to view  the home page 
+    """
+    technology = get_news_source('technology')
+    title = "News Home Source"
+    return render_template('index.html', title=title, technology=technology)
 
 
 
