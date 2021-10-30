@@ -1,4 +1,6 @@
 import urllib.request, json
+
+from app.model import NewsSource
 #Getting api key
 api_key = None
 #Getting the movie base url
@@ -8,7 +10,6 @@ def configure_request(app):
     global api_key,base_url
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['NEWS_API_BASE_URL'] 
-
 
 
 
