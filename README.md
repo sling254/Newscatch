@@ -1,7 +1,8 @@
 # Newscatch
-This is a flask application consuming API to get news sources and retrieve news articles in different sources available to help users keep up with current affairs. By sumarizing all news of the day and providing links for further reading articles that catch the user eye. 
+This is a flask application consuming API to get news sources and retrieve news articles in different sources available to help users keep up with current affairs. By summarizing  all news of the day and providing links for further reading articles that catch the user eye. 
 
 ### Check out the website :stars: 
+https://newscatchs.herokuapp.com/
 
 
 # Project Setup Instructions
