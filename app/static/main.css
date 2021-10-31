@@ -1,17 +1,20 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&family=Sura:wght@700&display=swap');
 .navbar{
     background-color: #10144C;
 }
 .navbar-brand {
     color: white !important;
+    font-family: 'Sansita Swashed', cursive;
 }
 
 #hero{
     min-height: 20vh;
     background-color:#27677B;
+    font-family: 'Sura', serif;
     
 }
 
 footer{
     background-color: #10144C;
+    
 }
