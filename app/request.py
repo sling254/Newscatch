@@ -66,9 +66,7 @@ def get_articles(id):
     
     with urllib.request.urlopen(get_articles_url) as url:
        # news_article_data = url.read()
-        news_article_results = json.loads(url.read())
-        print(news_article_results)
-        
+        news_article_results = json.loads(url.read())        
 
         news_article_object = None
 
