@@ -5,6 +5,7 @@ from app.model import NewsSource, NewsArticle
 api_key = None
 #Getting the movie base url
 base_url = None
+#Getting the movie base url
 articles_url = "https://newsapi.org/v2/top-headlines?sources={}&apiKey={}"
 
 def configure_request(app):
