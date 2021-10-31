@@ -1,6 +1,6 @@
 import urllib.request, json
-
 from app.model import NewsSource, NewsArticle
+
 #Getting api key
 api_key = None
 #Getting the movie base url
@@ -65,13 +65,17 @@ def get_articles(id):
     get_articles_url = articles_url.format(id,api_key)
     
     with urllib.request.urlopen(get_articles_url) as url:
-        news_article_data = url.read()
-        news_article_results = json.loads(news_article_data)
+       # news_article_data = url.read()
+        news_article_results = json.loads(url.read())
+        print(news_article_results)
+        
 
         news_article_object = None
 
         if news_article_results['articles']:
-            news_article_object = process_news_article(news_article_object['articles'])
+            news_article_object = process_news_article(news_article_results['articles'])
+
+            
 
 
     return news_article_object
@@ -81,8 +85,10 @@ def process_news_article(news_article_list):
     '''
 	Function that processes the articles results 
 	Args:
+        news_article_list: A list of dictionaries that contain articles details
 
 	Returns:
+        news_article_results: which is a list of articles object
 	'''
 
     news_article_object = []
